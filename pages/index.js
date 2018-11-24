@@ -1,10 +1,40 @@
-import Header from '../components/Header'
 import Layout from '../components/MyLayout.js'
+import {withRouter} from 'next/router'
+import Markdown from 'react-markdown'
 
-export default () => (
-  <div>
-    <Layout>
-    <p>Hello Next.js</p>
-    </Layout>
-  </div>
-)
+export default withRouter((props) => (
+  <Layout>
+   <h1>{props.router.query.title}</h1>
+   <div className="markdown">
+     <Markdown source={`
+This is our blog post.
+Yes. We can have a [link](/link).
+And we can have a title as well.
+
+### This is a title
+
+And here's the content.
+     `}/>
+   </div>
+   <style jsx global>{`
+     .markdown {
+       font-family: 'Roboto';
+     }
+
+     .markdown a {
+       text-decoration: none;
+       color: green;
+     }
+
+     .markdown a:hover {
+       opacity: 0.6;
+     }
+
+     .markdown h3 {
+       margin: 0;
+       padding: 0;
+       text-transform: uppercase;
+     }
+  `}</style>
+  </Layout>
+))
