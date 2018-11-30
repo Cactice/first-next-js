@@ -4,7 +4,7 @@ import { withRouter } from 'next/router'
 import Head from 'next/head'
 import Markdown from 'react-markdown'
 import { Button , Collapse } from 'react-bootstrap';
-
+import Link from 'next/link'
 
 let paragraph = `
 
@@ -53,8 +53,6 @@ export default class Index extends React.Component {
           <p>Loading...</p>
         </div>
       </Collapse>
-
-
 
       <style jsx global>{`
      .markdown {
