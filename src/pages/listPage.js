@@ -11,15 +11,17 @@ export default class Example extends React.Component {
   static async getInitialProps () {
     // res is assigned the response once the axios
     // async get is completed
-    const res = await axios.get('http://api.football-data.org/v1/competitions/426/leagueTable');
+    const res = await axios.get('https://youtube-index-backend.herokuapp.com/url/pKeynMccbZs')
     // Return properties
-    return {data: res.data}
+    return {data: res}
   }
   constructor(props, context) {
     super(props, context);
   }
 
   render () {
+    console.log('hey',this.props.data[0])
+    // Return properties
     return (
       <div>
         <Head>
@@ -35,26 +37,16 @@ export default class Example extends React.Component {
                 <thead>
                   <tr>
                     <th>Position</th>
-                    <th>Team</th>
                     <th>P</th>
-                    <th>GL</th>
-                    <th>W</th>
-                    <th>D</th>
-                    <th>L</th>
                   </tr>
                 </thead>
                 <tbody>
-                {this.props.data.standing.map((standing, i) => {
+                {this.props.data.map((standing, i) => {
                   const oddOrNot = i % 2 == 1 ? "pure-table-odd" : "";
                   return (
                       <tr key={i} className={oddOrNot}>
-                        <td>{standing.position}</td>
-                        <td><img className="pure-img logo" src={standing.crestURI}/></td>
-                        <td>{standing.points}</td>
-                        <td>{standing.goals}</td>
-                        <td>{standing.wins}</td>
-                        <td>{standing.draws}</td>
-                        <td>{standing.losses}</td>
+                        <td>{standing.start}</td>
+                        <td>{standing.text}</td>
                       </tr>
                     );
                 })}
