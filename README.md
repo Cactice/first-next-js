@@ -8,3 +8,6 @@ The routing was simple so I would love to get back to it considering how cool th
 
 
 That's my opinion for now.
+
+# Development Status 
+This repo combined with youtube index as the frontend for that service
